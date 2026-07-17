@@ -10,6 +10,7 @@ from aiogram.types import (
     ReplyKeyboardRemove,
 )
 from dotenv import load_dotenv
+from aiohttp import web
 
 import database
 from agent import get_agent_response
@@ -238,6 +239,21 @@ async def handle_non_text(message: types.Message):
     )
 
 
+# ── Dummy Web Server for Render Health Check ────────────────────────────────
+async def handle_ping(request):
+    return web.Response(text="Bot is running!")
+
+async def start_web_server():
+    app = web.Application()
+    app.router.add_get('/', handle_ping)
+    app.router.add_get('/health', handle_ping)
+    runner = web.AppRunner(app)
+    await runner.setup()
+    port = int(os.getenv("PORT", 8080))
+    site = web.TCPSite(runner, "0.0.0.0", port)
+    await site.start()
+    logging.info(f"Web server successfully bound to port {port} for Render health check")
+
 # ── Main ─────────────────────────────────────────────────────────────────
 async def main():
     if not TELEGRAM_BOT_TOKEN:
@@ -247,6 +263,13 @@ async def main():
         level=logging.INFO,
         format="%(asctime)s [%(levelname)s] %(message)s"
     )
+    
+    # Start web server to bind to PORT for Render
+    try:
+        await start_web_server()
+    except Exception as e:
+        logging.error(f"Failed to start web server: {e}")
+
     print("[OK] Abdulloh bot ishga tushmoqda...")
     await dp.start_polling(bot)
 
