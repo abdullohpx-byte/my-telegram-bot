@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "name": "IPhone 15 Pro",
+    "description": "Apple iPhone 15 Pro, 256GB, Titanium rang. A17 Pro chip va mukammal kameralar bilan.",
+    "price": "1200$"
+  },
+  {
+    "id": 2,
+    "name": "Samsung Galaxy S24 Ultra",
+    "description": "Samsung Galaxy S24 Ultra, 512GB, qora rang. AI funksiyalari va ajoyib zoom kameraga ega.",
+    "price": "1300$"
+  },
+  {
+    "id": 3,
+    "name": "MacBook Air M3",
+    "description": "Apple MacBook Air 13-inch, M3 chip, 8GB RAM, 256GB SSD. Yengil va kuchli noutbuk.",
+    "price": "1099$"
+  },
+  {
+    "id": 4,
+    "name": "AirPods Pro 2",
+    "description": "Apple AirPods Pro 2-avlod. Faol shovqin bekor qilish va zo'r ovoz sifati.",
+    "price": "250$"
+  }
+]
