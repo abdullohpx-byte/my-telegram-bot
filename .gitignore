@@ -1,0 +1,15 @@
+# .gitignore
+__pycache__/
+*.pyc
+*.pyo
+env/
+.venv/
+# virtual environment folders
+venv/
+# OS files
+.DS_Store
+Thumbs.db
+# Python env
+*.egg-info/
+# Logs
+*.log
